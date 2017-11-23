@@ -1,6 +1,7 @@
 # Multi Digit Classification
 
-A multi-digit classifier. Project for APPM 3310 - Matrix Methods and its Applications
+A Support Vector Machine for classifying handwritten digits.<br>
+Project for APPM 3310 - Matrix Methods and its Applications
 
 ### Owners
 * Aparajithan Venkateswaran
