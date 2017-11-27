@@ -1,0 +1,18 @@
+1. Introduction
+2. Mathematical Formulation
+	Actual math goes here
+	Role of linear algebra
+3. Experiments
+	Our code/what we did
+	Classifier
+4. Results
+	our results + error
+5. Conclusion
+
+References
+
+Appendix
+A. Derivation for optimization problem
+B. Example problem
+C. Sample images, etc.
+D. Sample code
