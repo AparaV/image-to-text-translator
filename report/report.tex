@@ -43,6 +43,10 @@
 
 \usepackage{titling} % Customizing the title section
 \usepackage{cite}
+\usepackage{graphicx}
+\graphicspath{{images/}{../images/}}
+
+\usepackage{subfiles}
 
 %\usepackage{hyperref} % For hyperlinks in the PDF
 
@@ -67,17 +71,9 @@
 \date{December 10, 2017} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent
-{Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here. Our abstract goes here.}
+\subfile{sections/abstract}
 \end{abstract}
 }
-
-%============================
-
-\begin{document}
-
-% Print the title
-\maketitle
 
 %============================
 %
@@ -85,70 +81,39 @@
 %
 %============================
 
+\begin{document}
+
+\maketitle
+
+%============================
+
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{L}{orem} ipsum dolor sit amet, consectetur adipiscing elit.
-\blindtext % Dummy text
-
-\blindtext % Dummy text
+\subfile{sections/introduction}
 
 %============================
 
 \section{Mathematical Formulation}
 
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
-\begin{itemize}
-\item Donec dolor arcu, rutrum id molestie in, viverra sed diam
-\item Curabitur feugiat
-\item turpis sed auctor facilisis
-\item arcu eros accumsan lorem, at posuere mi diam sit amet tortor
-\item Fusce fermentum, mi sit amet euismod rutrum
-\item sem lorem molestie diam, iaculis aliquet sapien tortor non nisi
-\item Pellentesque bibendum pretium aliquet
-\end{itemize}
-\blindtext % Dummy text
-
-Text requiring further explanation\footnote{Example footnote}.
+\subfile{sections/mathematical-formulation}
 
 %============================
 
 \section{Experiments}
 
-\begin{table}
-\caption{Example table}
-\centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\blindtext % Dummy text
-
-\begin{equation}
-\label{eq:emc}
-e = mc^2
-\end{equation}
-
-\blindtext % Dummy text
+\subfile{sections/experiments}
 
 %============================
 
 \section{Results}
 
-\blindtext
+\subfile{sections/results}
 
 %============================
 
 \section{Conclusion}
 
-\blindtext % Dummy text
+\subfile{sections/conclusion}
 
 %============================
 %
