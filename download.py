@@ -37,9 +37,9 @@ if __name__ == "__main__":
 	for file in FILES:
 		if "label" in file:
 			url = BASE_URL + file + "-" + FORMAT_LABEL + ".gz"
-			fname = os.path.join(DIR, file + "." + FORMAT_LABEL)
+			fname = os.path.join(DIR, file + "-" + FORMAT_LABEL)
 		else:
 			url = BASE_URL + file + "-" + FORMAT_IMAGE + ".gz"
-			fname = os.path.join(DIR, file + "." + FORMAT_IMAGE)
+			fname = os.path.join(DIR, file + "-" + FORMAT_IMAGE)
 		print("Downloading {}".format(file))
 		download_extract(url, fname)
