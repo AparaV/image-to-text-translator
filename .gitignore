@@ -1,6 +1,11 @@
 # Data
-# Hello
 data/
+
+# TeX
+report/report.aux
+report/report.bbl
+report/report.pdf
+report/report.synctex.gz
 
 # VSCode
 .vscode/
