@@ -35,4 +35,12 @@ This form is called canonical, as we have chosen to define y $\in$ ${-1, 1}$. Th
 
 The optimal hyperplane is defined as the plane that results in zero error and that maximizes the distance from the support vectors. In our use of two canonical classes, this distance can be derived to be $\frac{1}{2}\vec{w}\cdot\vec{w}$, or $\frac{||\vec{w}||}{2}$, and this is shown in the Appendix.
 
-Since we need to maximize this distance to find our optimal hyperplane (that is, the plane with the largest accuracy )
+This will maximize the margin of error of the separating plane and thus be the most accurate in determining which class any given input vector belongs to given our dataset. 
+
+The accuracy of the SVM very much depends on the dataset. If the data is linearly separable, the SVM will be more accurate than a set that is not. With that said, a non-linearly separable dataset can be transformed into a linear dataset using what is called a kernel function. These functions are inherently nonlinear since if we were to have a linear transformation and tried to find a better hyperplane:
+\begin{equation}
+L[\vec{x}] = A\vec{x} \\
+
+\vec{w}\cdot \vec{x} \Rightarrow \vec{w} \cdot \vec{x}^' 
+\end{equation}
+
