@@ -19,28 +19,29 @@
 %=====================
 %  MATHEMATICS
 %=====================
-To accomplish our task, we implement a Support-Vector Machine. This method can be used to separate, with a line\footnote{A pivotal assumption in our application is that our data (the images of different digits) are indeed linearly separable. We will find that this is mostly true, but not 100\% so.}, two classes of points in a dataset with a separating hyperplane:
+To accomplish our task, we implement a Support-Vector Machine. This method is used to separate data into two different classes by a hyperplane\footnote{A pivotal assumption in our application is that our data (the images of different digits) are indeed linearly separable. We will find that this is mostly true, but not 100\% so.}:
 \begin{equation}
 \vec{w}\cdot\vec{x} + b = 0
 \end{equation}
 The two sets' vectors with the minimum distance to each other are defined as the support vectors, and assigned a $y_{i}$ shift of $1$ or $-1$ from the separating. These vectors form the two constraints on our optimal hyperplane:
 \begin{equation}
-\vec{w}\cdot\vec{x_0} + b \geq 1 \text{ , if } \vec{y_i} = 1
-\end{equation}
-\begin{equation}
-\vec{w}\cdot\vec{x_1} + b \leq -1 \text{ , if } \vec{y_i} = -1
+\begin{gathered}
+	\vec{w}\cdot\vec{x_0} + b \geq 1 \text{ , if } \vec{y_i} = 1 \\
+	\vec{w}\cdot\vec{x_1} + b \leq -1 \text{ , if } \vec{y_i} = -1 
+\end{gathered}
 \end{equation}
 
-This form is called canonical, as we have chosen to define y $\in$ ${-1, 1}$. The choices of -1 and 1 are arbitrary, but result in the most efficient calculation in computer applications.
+This form is called canonical, as we have chosen to define $y \in \{-1, 1\}$. The choices of -1 and 1 are arbitrary, but result in the most efficient calculation in computer applications.
 
 The optimal hyperplane is defined as the plane that results in zero error and that maximizes the distance from the support vectors. In our use of two canonical classes, this distance can be derived to be $\frac{1}{2}\vec{w}\cdot\vec{w}$, or $\frac{||\vec{w}||}{2}$, and this is shown in the Appendix.
 
 This will maximize the margin of error of the separating plane and thus be the most accurate in determining which class any given input vector belongs to given our dataset. 
 
-The accuracy of the SVM very much depends on the dataset. If the data is linearly separable, the SVM will be more accurate than a set that is not. With that said, a non-linearly separable dataset can be transformed into a linear dataset using what is called a kernel function. These functions are inherently nonlinear since if we were to have a linear transformation and tried to find a better hyperplane:
+The accuracy of the SVM very much depends on the data. If the data is linearly separable, the SVM will be more accurate than a set that is not. With that said, a non-linearly separable dataset can be transformed into a linear dataset using what is called a kernel function. These functions are inherently nonlinear since if we were to have a linear transformation and tried to find a better hyperplane:
 \begin{equation}
-L[\vec{x}] = A\vec{x} \\
-
-\vec{w}\cdot \vec{x} \Rightarrow \vec{w} \cdot \vec{x}^' 
+\begin{gathered}
+	L[\vec{x}] = A\vec{x} \\
+	\vec{w}\cdot \vec{x} \Rightarrow \vec{w} \cdot \vec{x}^{'} 
+\end{gathered}
 \end{equation}
 

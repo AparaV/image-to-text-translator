@@ -16,24 +16,26 @@ With classifying digits, we have $10$ different classes i.e., $\{0, 1, 2, 3, 4, 
 Let us introduce some old notation to our new data. Let the number of images we have be $m$. Our $\vec{X}\in\mathbb{R}^{m}$, here, becomes a vector of all the images from the dataset. Let us denote each element of $\vec{X}$ as $\vec{x_i}$, which is, in turn, a single image from the dataset that is unrolled into a one dimensional vector. Let the length of the unrolled vectore be $n$. Therefore, $\vec{x_i}\in\mathbb{R}^{n}$. Each pixel value of the image becomes a feature in our feature space. Since we are working with grayscale images, we do not have to worry about RGB channels. Hence, it might make sense to think of $X$ as a matrix, $X\in\mathbb{R}^{m \times n}$.
 
 Our ${y_i}$ associated with each of the $\vec{x_i}$ depends on the hyperplane we are constructing. Assume we are constructing the $k^{th}$ hyperplane i.e., the hyperplane that classifies the image as either digit $k$, or not digit $k$. Let us define the normal to this hyperplane as $\vec{w}^{(k)}$. Since our $y_i$ depends on the value $k$, let us re-define our notation as $y^{(k)}_i$, where
-\begin{equation}
+\begin{equation*}
     y^{(k)}_i= 
 \begin{cases}
- 1,& \text{if } x_i \text{ represents } k\\
--1,              & \text{otherwise}
+\begin{aligned}
+ 1,& \text{ if } x_i \text{ represents } k\\
+-1,              & \text{ otherwise}
+\end{aligned}
 \end{cases}
-\end{equation}
+\end{equation*}
 
 With this, we can now train the support vector machine and obtain our $10$ hyperplanes. As discussed previously, for predicting the digit on an image, we can use the modified equation
-\begin{equation}
+\begin{equation*}
 	f^{(k)}(x_i) = \vec{w}^{(k)}\cdot\vec{x_i} + b
-\end{equation}
+\end{equation*}
 If $f^{(k)}(x_i) \geq 0$, then $\vec{x_i}$ represents $k$, and it does not represent $k$ otherwise. If, using this method, we find that $\vec{x_i}$ represents multiple $k_j$, then we choose a $k_a$ such that
-\begin{equation}
+\begin{equation*}
 	f^{(k_a)}(x_i) = \max_{j} f^{(k_j)}(x_i)
-\end{equation}
+\end{equation*}
 
 To make computation simpler, we will set the intercept as the origin:
-\begin{equation}
+\begin{equation*}
 b = 0
-\end{equation}
+\end{equation*}
