@@ -1,11 +1,31 @@
 %=====================
-% Remove this after writing actual report
-%=====================
-
-\blindtext
-
-\blindtext
-
-%=====================
 %  RESULTS
 %=====================
+
+\begin{table*}[!htb]
+	\centering
+	\begin{tabular}{lcc}
+		\toprule
+		\multicolumn{3}{c}{\textbf{Accuracy of our classifiers}} \\
+		\midrule
+		Kernel & Training Accuracy & Testing Accuracy \\
+		\midrule
+		Linear & $87.27$ \% & $86.49$ \% \\
+		Polynomial (deg=$2$) & $100$ \% & $98.08$ \% \\
+		Polynomial (deg=$3$) & $99.99$ \% & $97.85$ \% \\
+		Sigmoid & $2$ \% & $2$ \% \\
+		\bottomrule
+	\end{tabular}
+	\caption{Accuracy of different classifiers}
+	\label{tab:results}
+\end{table*}
+
+With the techniques, and assumptions described in the previous section, we used Python and \texttt{sklearn}\cite{scikit-learn} to build a Suppoer Vector Machine classifier to classify handwritten digits from the MNIST dataset.
+
+Since, the optimzation problem is a Quadratic Programming Problem, which is beyond the scope of this report, we used an existing optimizer offered by \texttt{sklearn} library.
+
+We first fit our hyperlanes using $60,000$ training images without any kernel transform i.e., we used the linear kernel. Then, we tested the accuracy of our hyperplanes by using it to classify $10,000$ testing images. With the linear kernel, we got an accuracy of $83.06 \%$.
+
+We then transformed our data with the polynomial kernel. We first used a quadratic transformation, and then a cubic transformation. We also tried using the sigmoid kernel. Our results for all of these are summarized in Table \ref{tab:results}.
+
+As we can see from Table \ref{tab:results}, our data (the images) are not completely separable. In fact, we get the best accuracy on our testing images when we use a polynomial of degree $2$ i.e., a quadratic transformation.
