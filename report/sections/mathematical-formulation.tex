@@ -34,7 +34,7 @@ The two sets' vectors with the minimum distance to each other are defined as the
 Figure \ref{fig:SVM_fig2} shows this concept using a Matlab plot
 
 \begin{figure*}[!htb]
-	\includegraphics[width=10cm, height=10cm]{SVM_fig}
+	\includegraphics[width=10cm, height=10cm]{SVM_fig2}
 	\centering
 	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors.}
 	\label{fig:SVM_fig2}
@@ -82,9 +82,9 @@ The accuracy of the SVM very much depends on the data. If the data is linearly s
 
 This is again a hyperplane on the same set $\vec{x}$, and provides us no better solution.
 
-With a nonlinear kernal function, we can turn a set like \ref{fig:trans}
+With a nonlinear kernal function, we can turn a set as in Figure \ref{fig:pre-trans} into a set as in Figure \ref{fig:post-trans}. This allows us to use linear hyperplanes with a non-linearly separable set of data.
 
-\begin{figure*}[t!]
+\begin{figure*}[t]
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\includegraphics[width=7cm, height=7cm]{pre-transformation}
@@ -100,7 +100,6 @@ With a nonlinear kernal function, we can turn a set like \ref{fig:trans}
 		\label{fig:post-trans}
 	\end{subfigure}%
 
-	\caption{The data before (\ref{fig:pre-trans}) and after (\ref{fig:post-trans}) the nonlinear kernal function was applied. It is now linearly separable and thus an SVM is a viable classifying tool. }	
+	\caption{The data before (\ref{fig:pre-trans}) and after (\ref{fig:post-trans}) a nonlinear kernal function was applied. It is now linearly separable and thus an SVM is a viable classifying tool. }	
 	\label{fig:trans}
 \end{figure*}
-
