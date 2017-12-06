@@ -31,18 +31,18 @@ The two sets' vectors with the minimum distance to each other are defined as the
 \end{gathered}
 \end{equation}
 
-Figure \ref{fig:SVM_fig} shows this concept using a Matlab plot
+Figure \ref{fig:SVM_fig2} shows this concept using a Matlab plot
 
 \begin{figure*}[!htb]
 	\includegraphics[width=10cm, height=10cm]{SVM_fig}
 	\centering
 	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
-	\label{fig:SVM_fig}
+	\label{fig:SVM_fig2}
 \end{figure*}
 
 This form is called canonical, as we have chosen to define $y \in \{-1, 1\}$. The choices of -1 and 1 are arbitrary, but result in the simplest most efficient calculation in computer applications. The set of $y$ values represents our two classes, and must always only have two elements. The problem of applying this to problems with more than 2 cases is discussed later, since our problem is to differentiate between 10 classes of numerical digits.
-
-Furthermore, this application represents the two classes as Class 1 and Not Class 1. Therefore the two classes in this case must be orthogonal compliments to each other in the superspace they both reside. That is: the sum of the dimension of Class 1 and 2 must equal the superspace which they occupy. As an example on the superspace $V = \Re^3$, assume Class 1 is defined by the span of column vectors: 
+\subparagraph{A Note on the Fundamental Theorem of Linear Algebra}
+This application represents the two classes as Class 1 and Not Class 1 (note the binary relationship). Therefore the two classes in this case must be orthogonal compliments to each other in the superspace they both reside. That is: the sum of the dimension of Class 1 and 2 must equal the superspace which they occupy. As an example on the superspace $V = \Re^3$, assume Class 1 is defined by the span of column vectors: 
 \begin{equation}
 V_{C_{1}} = 
 span(\begin{pmatrix}
@@ -61,15 +61,40 @@ V_{C_{2}} = span(\begin{pmatrix}
 This is a trivial example, but he beauty of SVMs is that we can define these classes however we like -- as long as we can convert some set of objects into vectors.
 \subparagraph{The Optimal Hyperplane}
 
-The optimal hyperplane is defined as the plane that results in zero error and that maximizes the distance from the support vectors. In our use of two canonical classes, this distance can be derived to be $\frac{1}{2}\vec{w}\cdot\vec{w}$, or $\frac{||\vec{w}||}{2}$, and this is shown in the Appendix.
+The optimal hyperplane is defined as the plane that results in zero error and that maximizes the distance from the support vectors. Figure \ref{fig:SVM_fig} shows the optimal hyperplane perfectly in the middle of the two support-vector constraints. In our use of two canonical classes, this distance can be derived to be 
+\begin{equation}
+\frac{1}{2}\vec{w}\cdot\vec{w} = \frac{{||\vec{w}||}^2}{2}
+\label{dist}
+\end{equation}
 
-This will maximize the margin of error of the separating plane and thus be the most accurate in determining which class any given input vector belongs to given our dataset. 
+ and this is shown in the Appendix.
 
-The accuracy of the SVM very much depends on the data. If the data is linearly separable, the SVM will be more accurate than a set that is not. With that said, a non-linearly separable dataset can be transformed into a linear dataset using what is called a kernel function. These functions are inherently nonlinear since if we were to have a linear transformation and tried to find a better hyperplane:
+We now have a maximization problem. Maximizing Equation \ref{dist} will optimize the margin of error of the separating plane and thus be the most accurate in determining which class any given input vector belongs to. 
+
+\subparagraph{Linear Separability}
+The accuracy of the SVM very much depends on the data. If the data is linearly separable, the SVM will be more accurate than a set that is not. This is because SVMs only use linear hyperplanes, meaning they cannot bend around outliers or fluctuations in data. With that said, a non-linearly separable dataset can be transformed into a linear dataset using what is called a kernel function. These functions are inherently nonlinear since if we were to have a linear transformation and tried to find a better hyperplane for the data $\vec{x}$:
 \begin{equation}
 \begin{gathered}
-	L[\vec{x}] = A\vec{x} \\
-	\vec{w}\cdot \vec{x} \Rightarrow \vec{w} \cdot \vec{x}^{'} 
+	L[\vec{x}] = A\vec{x} = \vec{x}^{'} \\
+	\vec{w}\cdot \vec{x} \Rightarrow \vec{w} \cdot \vec{x}^{'} = \vec{w}A\vec{x} = \vec{w}^{'}\cdot\vec{x} 
 \end{gathered}
 \end{equation}
+
+This is again a hyperplane on the same set $\vec{x}$, and provides us no better solution.
+
+With a nonlinear kernal function, we can turn a set like 
+
+\begin{figure*}[!htb]
+	\includegraphics[width=10cm, height=10cm]{SVM_fig2}
+	\centering
+	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
+	\label{fig:SVM_fig2}
+\end{figure*}
+
+\begin{figure}[!htb]
+	\includegraphics[width=10cm, height=10cm]{SVM_fig}
+	\centering
+	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
+	\label{fig:SVM_fig2}
+\end{figure}
 
