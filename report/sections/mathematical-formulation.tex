@@ -23,7 +23,7 @@ To accomplish our task, we implement a Support-Vector Machine. This method is us
 \begin{equation}
 \vec{w}\cdot\vec{x} + b = 0
 \end{equation}
-The two sets' vectors with the minimum distance to each other are defined as the support vectors, and assigned a $y_{i}$ shift of $1$ or $-1$ from the separating. These vectors form the two constraints on our optimal hyperplane:
+The two sets' vectors with the minimum distance to each other are defined as the support vectors, and assigned a $y_{i}$ shift of $1$ or $-1$ from the separating hyperplane. These vectors form the two constraints on our optimal hyperplane:
 \begin{equation}
 \begin{gathered}
 	\vec{w}\cdot\vec{x_0} + b \geq 1 \text{ , if } \vec{y_i} = 1 \\
@@ -31,7 +31,35 @@ The two sets' vectors with the minimum distance to each other are defined as the
 \end{gathered}
 \end{equation}
 
-This form is called canonical, as we have chosen to define $y \in \{-1, 1\}$. The choices of -1 and 1 are arbitrary, but result in the most efficient calculation in computer applications.
+Figure \ref{fig:SVM_fig} shows this concept using a Matlab plot
+
+\begin{figure*}[!htb]
+	\includegraphics[width=10cm, height=10cm]{SVM_fig}
+	\centering
+	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
+	\label{fig:SVM_fig}
+\end{figure*}
+
+This form is called canonical, as we have chosen to define $y \in \{-1, 1\}$. The choices of -1 and 1 are arbitrary, but result in the simplest most efficient calculation in computer applications. The set of $y$ values represents our two classes, and must always only have two elements. The problem of applying this to problems with more than 2 cases is discussed later, since our problem is to differentiate between 10 classes of numerical digits.
+
+Furthermore, this application represents the two classes as Class 1 and Not Class 1. Therefore the two classes in this case must be orthogonal compliments to each other in the superspace they both reside. That is: the sum of the dimension of Class 1 and 2 must equal the superspace which they occupy. As an example on the superspace $V = \Re^3$, assume Class 1 is defined by the span of column vectors: 
+\begin{equation}
+V_{C_{1}} = 
+span(\begin{pmatrix}
+1 & 0 \\0 & 1\\1& 0
+\end{pmatrix}),
+\end{equation}
+
+then Class two must be defined as:
+\begin{equation}
+V_{C_{2}} = span(\begin{pmatrix}
+-1\\0\\1
+\end{pmatrix}
+)
+\end{equation}
+
+This is a trivial example, but he beauty of SVMs is that we can define these classes however we like -- as long as we can convert some set of objects into vectors.
+\subparagraph{The Optimal Hyperplane}
 
 The optimal hyperplane is defined as the plane that results in zero error and that maximizes the distance from the support vectors. In our use of two canonical classes, this distance can be derived to be $\frac{1}{2}\vec{w}\cdot\vec{w}$, or $\frac{||\vec{w}||}{2}$, and this is shown in the Appendix.
 
