@@ -49,6 +49,7 @@
 \usepackage{subfiles}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \usepackage{url}
 \graphicspath{ {images/} }
 \usepackage{subcaption}
@@ -127,9 +128,25 @@
 %
 %============================
 
+\newpage
 \nocite{*}
 \bibliographystyle{ieeetr}
 \bibliography{references}
+
+%============================
+%
+%	APPENDIX
+%
+%============================
+
+\clearpage
+\newpage
+\onecolumn
+\appendix
+
+%============================
+
+\subfile{sections/appendix-a}
 
 %============================
 

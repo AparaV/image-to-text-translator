@@ -1,0 +1,32 @@
+\section{Distance Between Two Parallel Hyperplanes}
+
+We have our optimal hyperplane (\ref{eq:opt-plane}) and the two margin hyperplanes (\ref{eq:mar1-plane}), (\ref{eq:mar2-plane}) that are equidistant from hyperplane (\ref{eq:opt-plane}).
+
+\begin{align}
+	\vec{w}\cdot\vec{x} + b = 0 \label{eq:opt-plane} \\
+	\vec{w}\cdot\vec{x} + b = \delta \label{eq:mar1-plane} \\
+	\vec{w}\cdot\vec{x} + b = -\delta \label{eq:mar2-plane}
+\end{align}
+
+Let the distance between the two planes be $d$. We know that all these hyperplanes are parallel. Therefore, we can write the vector from hyperplane (\ref{eq:mar1-plane}) to hyperplane (\ref{eq:mar2-plane}) as:
+
+\begin{equation}
+	\vec{k} = d\frac{\vec{w}}{\norm{\vec{w}}}
+\end{equation}
+
+Now, let $\vec{x_0}$ be a point on the hyperplane (\ref{eq:mar2-plane}) and $\vec{x_1}$ be a point on the hyperplane (\ref{eq:mar1-plane}) that is in the direction of the normal vector $\vec{w}$ i.e., $\vec{x_1} = \vec{x_0} + \vec{k}$.
+
+\begin{align}
+	\vec{w}\cdot\vec{x_1} + b = \delta \nonumber\\
+	\vec{w}\cdot(\vec{x_0} + \vec{k}) + b = \delta \tag*{($\vec{x_1} = \vec{x_0} + \vec{k}$)}\nonumber\\
+	\vec{w}\cdot\vec{x_0} + b + \vec{w}\cdot\vec{k} = \delta \nonumber\\
+	\vec{w}\cdot\vec{k} - \delta = \delta \tag*{($\vec{w}\cdot\vec{x_0} + b = -\delta$)}\nonumber\\
+	d\frac{\vec{w}\cdot\vec{w}}{\norm{\vec{w}}} = 2\delta \nonumber\\
+	d = \frac{2\delta}{\norm{\vec{w}}} \label{eq:dist-planes}
+\end{align}
+
+Now, if we set $\delta = 1$ to make our math simpler, we can rewrite (\ref{eq:dist-planes}) as:
+
+\begin{equation}
+	d = \frac{2}{\norm{\vec{w}}} \nonumber
+\end{equation}
