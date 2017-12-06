@@ -84,17 +84,22 @@ This is again a hyperplane on the same set $\vec{x}$, and provides us no better 
 
 With a nonlinear kernal function, we can turn a set like 
 
-\begin{figure*}[!htb]
-	\includegraphics[width=10cm, height=10cm]{SVM_fig2}
+\begin{figure*}[t!]
 	\centering
-	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
-	\label{fig:SVM_fig2}
-\end{figure*}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, height=7cm]{pre-transformation}
+		\caption{}
+		\centering
+		\label{fig:pre-trans}
+	\end{subfigure}%
+~
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, 			height=7cm]{post-transform}
+		\caption{}
+			\centering
+		\label{fig:post-trans}
+	\end{subfigure}%
 
-\begin{figure}[!htb]
-	\includegraphics[width=10cm, height=10cm]{SVM_fig}
-	\centering
-	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors. \cite{matlab}}
-	\label{fig:SVM_fig2}
-\end{figure}
+	\caption{The data before (\ref{fig:pre-trans}) and after (\ref{fig:post-trans}) the nonlinear kernal function was applied. It is now linearly separable and thus an SVM is a viable classifying tool \cite{matlab}}	
+\end{figure*}
 
