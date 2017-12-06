@@ -13,7 +13,7 @@
 		Linear & $87.27$ \% & $86.49$ \% \\
 		Polynomial (deg=$2$) & $100$ \% & $98.08$ \% \\
 		Polynomial (deg=$3$) & $99.99$ \% & $97.85$ \% \\
-		Sigmoid & $2$ \% & $2$ \% \\
+		Sigmoid & $9.92$ \% & $10.09$ \% \\
 		\bottomrule
 	\end{tabular}
 	\caption{Accuracy of different classifiers}
@@ -28,4 +28,4 @@ We first fit our hyperlanes using $60,000$ training images without any kernel tr
 
 We then transformed our data with the polynomial kernel. We first used a quadratic transformation, and then a cubic transformation. We also tried using the sigmoid kernel. Our results for all of these are summarized in Table \ref{tab:results}.
 
-As we can see from Table \ref{tab:results}, our data (the images) are not completely separable. In fact, we get the best accuracy on our testing images when we use a polynomial of degree $2$ i.e., a quadratic transformation.
+As we can see from Table \ref{tab:results}, our data (the images) are not completely linearly separable. In fact, we get the best accuracy on our testing images when we use a polynomial of degree $2$ i.e., a quadratic transformation. It makes sense to think that transforming the data into the wrong feature space will make it harder, and sometimes impossible, to find a decent hyperplane that separates the data. Our intuition is supported by the sigmoid kernel where our accuracy drops by a factor of $10$ compared to the linear kernel.
