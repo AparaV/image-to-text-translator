@@ -10,7 +10,7 @@
 
 @Article{cortes1995,
 	author    = {Cortes, Corinna and Vapnik, Vladimir},
-	title     = {Support-vector networks},
+	title     = {Support-{V}ector {N}etworks},
 	journal   = {Machine Learning},
 	year      = {1995},
 	month     = {Sep},
@@ -18,14 +18,14 @@
 	volume    = {20},
 	number    = {3},
 	pages     = {273--297},
-	abstract  = {Thesupport-vector network is a new learning machine for two-group classification problems. The machine conceptually implements the following idea: input vectors are non-linearly mapped to a very high-dimension feature space. In this feature space a linear decision surface is constructed. Special properties of the decision surface ensures high generalization ability of the learning machine. The idea behind the support-vector network was previously implemented for the restricted case where the training data can be separated without errors. We here extend this result to non-separable training data.},
+	abstract  = {The support-vector network is a new learning machine for two-group classification problems. The machine conceptually implements the following idea: input vectors are non-linearly mapped to a very high-dimension feature space. In this feature space a linear decision surface is constructed. Special properties of the decision surface ensures high generalization ability of the learning machine. The idea behind the support-vector network was previously implemented for the restricted case where the training data can be separated without errors. We here extend this result to non-separable training data.},
 	issn      = {1573-0565},
 	doi       = {10.1007/BF00994018},
 	url       = {https://doi.org/10.1007/BF00994018}
 }
 
 @article{scikit-learn,
-	title     = {Scikit-learn: Machine Learning in {P}ython},
+	title     = {Scikit-learn: Machine {L}earning in {P}ython},
 	author    = {Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
 	and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
 	and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
@@ -37,9 +37,42 @@
 }
 
 @misc{mnist,
-	title     = {MNIST Handwritten Digit Database},
+	title     = {{MNIST} {H}andwritten {D}igit {D}atabase},
 	author    = {LeCun, Yann and Cortes, Corinna and Burges, Christopher},
 	year      = {1999},
 	howpublished = {\url{http://yann.lecun.com/exdb/mnist/}},
 	note      = {Accessed 2017-12-03}
+}
+
+@misc{svm-distance,
+	title     = {{SVM}: Understanding {M}ath - {T}he {O}ptimal {H}yperplane},
+	author    = {Kowalczyk, Alexandre},
+	year      = {2015},
+	month     = {June},
+	howpublished = {\url{https://www.svm-tutorial.com/2015/06/svm-understanding-math-part-3/}},
+	note      = {Accessed 2017-12-06}
+}
+
+@misc{svm-andrew-ng,
+	title     = {{CS229} {L}ecture {N}otes: {S}upport {V}ector {M}achines},
+	author    = {Ng, Andrew},
+	year      = {2017},
+	month     = {September},
+	howpublished = {\url{http://cs229.stanford.edu/notes/cs229-notes3.pdf}},
+	note      = {Accessed 2017-12-06}
+}
+
+@techreport{smo-algorithm,
+	author    = {Platt, John},
+	title     = {Sequential Minimal Optimization:  A Fast Algorithm for Training Support Vector Machines},
+	year      = {1998},
+	month     = {April},
+	abstract  = {
+	
+	This paper proposes a new algorithm for training support vector machines: Sequential Minimal Optimization , or SMO . Training a support vector machine requires the solution of a very large quadratic programming (QP) optimization problem. SMO breaks this large QP problem into a series of smallest possible QP problems. These small QP problems are solved analytically, which avoids using a time-consuming numerical QP optimization as an inner loop. The amount of memory required for SMO is linear in the training set size, which allows SMO to handle very large training sets. Because matrix computation is avoided, SMO scales somewhere between linear and quadratic in the training set size for various test problems, while the standard chunking SVM algorithm scales somewhere between linear and cubic in the training set size. SMO's computation time is dominated by SVM evaluation, hence SMO is fastest for linear SVMs and sparse data sets. On real- world sparse data sets, SMO can be more than 1000 times faster than the chunking algorithm.
+	
+	
+	},
+	url     = {https://www.microsoft.com/en-us/research/publication/sequential-minimal-optimization-a-fast-algorithm-for-training-support-vector-machines/},
+	pages   = {21}
 }

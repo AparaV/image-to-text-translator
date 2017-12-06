@@ -1,0 +1,70 @@
+\section{Finding the Optimal Hyperplane}
+
+Enough justice to the optimization problem cannot be done without going beyond the scope of linear algebra. However, we still try to explain the problem without delving too much into the nonlinearities.
+
+We are presented with the following optimization problem:
+
+\begin{gather}
+	\min_{\vec{w}, b} \frac{1}{2}\norm{w}^2 \nonumber\\
+	\text{s.t. }
+	\begin{cases}
+	\begin{aligned}
+		\vec{w}\cdot\vec{x_i} + b \geq 1 \text{ if $y_i = 1$} \nonumber\\
+		\vec{w}\cdot\vec{x_i} + b \leq -1 \text{ if $y_i = 1$} \nonumber
+	\end{aligned}
+	\end{cases}
+\end{gather}
+
+Let us define a new function $g_i(\vec{w}, b)$ as:
+
+\begin{equation}
+	g_i(\vec{w}, b) = -y_i(\vec{w}\cdot\vec{x_i} + b) + 1
+\end{equation}
+
+Now, if there are $m$ training examples in our dataset, we can rewrite the problem in a familiar manner, and let's call it the \textbf{primal} optimization problem:
+
+\begin{gather}
+	\min_{\vec{w}, b} \frac{1}{2}\norm{w}^2 \nonumber\\
+	\text{s.t. }
+	g_i(\vec{w}, b)  \leq 0 \text{ ,}\quad\text{$i = 1, 2, \dots , m$}\nonumber
+\end{gather}
+
+Now, we can construct the Lagrangian for our optimization problem:
+
+\begin{gather}
+\mathcal{L}(\vec{w}, b, \alpha) = \frac{1}{2}\norm{\vec{w}}^2 - \sum_{i = 1}^{m}\alpha_i[y_i(\vec{w}\cdot\vec{x_i} + b) - 1] \label{eq:lag} \\
+\text{s.t. } \alpha_{i} \geq 0\text{ ,}\quad\text{$i = 1, 2, \dots , m$}\nonumber
+\end{gather}
+
+where $\alpha_i$ are our Lagrange multipliers. To construct the dual form of our problem, set the derivatives of $\mathcal{L}$ with respect to $\vec{w}$ and $b$ to zero. We have:
+
+\begin{gather}
+\nabla_{\vec{w}}\mathcal{L}(\vec{w}, b, \alpha) = \vec{w} - \sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i} = 0 \nonumber \\
+\implies \vec{w} = \sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i} \label{eq:lag-w}\\
+\text{and } \frac{\partial}{\partial b}\mathcal{L}(\vec{w}, b, \alpha) = \sum_{i = 1}^{m}\alpha_{i}y_{i} = 0 \label{eq:lag-b}
+\end{gather}
+
+Simplifying (\ref{eq:lag}) with (\ref{eq:lag-w}) and (\ref{eq:lag-b}), we have
+
+\begin{equation}
+\mathcal{L}(\vec{w}, b, \alpha) = \sum_{i = 1}^{m}\alpha_{i} - \frac{1}{2}\sum_{i,j = 1}^{m}y_{i}y_{j}\alpha_{i}\alpha_{j}\langle\vec{x_i}, \vec{x_j}\rangle \label{eq:lag-simple}
+\end{equation}
+
+Using (\ref{eq:lag-simple}), our constraints $\alpha_{i} \geq 0$ and (\ref{eq:lag-b}), we obtain the following \textbf{dual} optimization problem:
+
+\begin{gather}
+\max_{\alpha} W(\alpha) = \sum_{i = 1}^{m}\alpha_{i} - - \frac{1}{2}\sum_{i,j = 1}^{m}y_{i}y_{j}\alpha_{i}\alpha_{j}\langle\vec{x_i}, \vec{x_j} \label{eq:dual} \\
+\text{s.t. } \quad\alpha_{i} \geq 0\text{ ,}\quad\text{$i = 1, 2, \dots , m$} \label{eq:dual-c1} \\
+\quad \sum_{i = 1}^{m}\alpha_{i}y_{i} = 0 \label{eq:dual-c2}
+\end{gather}
+
+We can easily verify that the solutions to the \textbf{primal} correspond to the solutions of the \textbf{dual}. It also happens that the Karush-Kuhn-Tucker (KKT) conditions hold true for our optimization problem. For any nonlinear programming to be optimal, KKT are necessary conditions. This guarantees that our optimization problem can be optimized.
+
+Constraints (\ref{eq:dual-c1}-\ref{eq:dual-c2}) make it impossible for us to modify a single $\alpha_i$  without changing any other $\alpha_j$ because of (\ref{eq:dual-c2}). Therefore, we must update at least two $\alpha_i$'s simultaneously to keep satisfying constraints. This idea is the motivation behind the Sequential Minimal Optimization (SMO) algorithm which we will use to optimize the \textbf{dual} problem. Interested readers can refer \cite{smo-algorithm} for the original discussion of the SMO algorithm. A complete description of the mathematics of this algorithm is beyond the scope of this report. So, we will end by providing a very simple psuedocode for the algorithm that is adapted from \cite{svm-andrew-ng}:
+\newline
+\begin{lstlisting}
+Repeat until convergence {
+	1. Select some pair $\alpha_{i}$ and $\alpha_{j}$ to update next (using a heuristic that tries to pick the two that will allow us to make the biggest progress towards the global maximum)
+	2. Reoptimize $W(\alpha)$ with respect to $\alpha_{i}$ and $\alpha_{j}$, while holding all the other $\alpha_{k}$'s ($k \neq i, j$) fixed
+}
+\end{lstlisting}
