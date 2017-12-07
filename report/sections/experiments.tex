@@ -4,7 +4,7 @@
 
 We will now apply this idea of Support Vector Machines to classifying handwritten digits from the MNIST dataset\cite{mnist}. The MNIST database consists of $60,000$ images of handwritten digits, with correct labels, that are size-normalized and centered. Each of these images is a $28\times28$ image of a single digit. So, our classification problem becomes that of learning the recognize the correct digit. Figure \ref{fig:mnist} shows some sample images from the dataset.
 
-\begin{figure}[t]
+\begin{figure}[!tb]
 	\includegraphics[width=4cm, height=4cm]{mnist_sample}
 	\centering
 	\caption{Sample images from MNIST dataset}
@@ -35,7 +35,4 @@ If $f^{(k)}(x_i) \geq 0$, then $\vec{x_i}$ represents $k$, and it does not repre
 	f^{(k_a)}(x_i) = \max_{j} f^{(k_j)}(x_i)
 \end{equation*}
 
-To make computation simpler, we will set the intercept as the origin:
-\begin{equation*}
-b = 0
-\end{equation*}
+Finally, to make computation simpler, we set the intercept as the origin i.e., $b = 0$

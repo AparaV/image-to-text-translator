@@ -1,6 +1,7 @@
 \section{Finding the Optimal Hyperplane}
+\label{appendix:optimzation}
 
-Enough justice to the optimization problem cannot be done without going beyond the scope of linear algebra. However, we still try to explain the problem without delving too much into the nonlinearities.
+Enough justice to the optimization problem cannot be done without going beyond the scope of linear algebra. However, we will still try to explain the problem without delving too much into the nonlinearities.
 
 We are presented with the following optimization problem:
 
@@ -60,7 +61,7 @@ Using (\ref{eq:lag-simple}), our constraints $\alpha_{i} \geq 0$ and (\ref{eq:la
 
 We can easily verify that the solutions to the \textbf{primal} correspond to the solutions of the \textbf{dual}. It also happens that the Karush-Kuhn-Tucker (KKT) conditions hold true for our optimization problem. For any nonlinear programming to be optimal, KKT are necessary conditions. This guarantees that our optimization problem can be optimized.
 
-Constraints (\ref{eq:dual-c1}-\ref{eq:dual-c2}) make it impossible for us to modify a single $\alpha_i$  without changing any other $\alpha_j$ because of (\ref{eq:dual-c2}). Therefore, we must update at least two $\alpha_i$'s simultaneously to keep satisfying constraints. This idea is the motivation behind the Sequential Minimal Optimization (SMO) algorithm which we will use to optimize the \textbf{dual} problem. Interested readers can refer \cite{smo-algorithm} for the original discussion of the SMO algorithm. A complete description of the mathematics of this algorithm is beyond the scope of this report. So, we will end by providing a very simple psuedocode for the algorithm that is adapted from \cite{svm-andrew-ng}:
+Constraints (\ref{eq:dual-c1}-\ref{eq:dual-c2}) make it impossible for us to modify a single $\alpha_i$  without changing any other $\alpha_j$ because of (\ref{eq:dual-c2}). Therefore, we must update at least two $\alpha_i$'s simultaneously to keep satisfying constraints. This idea is the motivation behind the Sequential Minimal Optimization (SMO) algorithm which we will use to optimize the \textbf{dual} problem. Interested readers can refer \cite{smo-algorithm} for the original discussion of the SMO algorithm. A complete description of the mathematics of this algorithm is beyond the scope of this report. So, we will end our discussion by providing a very simple psuedocode for the algorithm that is adapted from \cite{svm-andrew-ng}:
 \newline
 \begin{lstlisting}
 Repeat until convergence {
