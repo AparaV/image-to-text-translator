@@ -1,8 +1,8 @@
 * Fig 1 - label support vectors - change the caption and text
 * Another figure - showing other separating planes - change the caption and text
 * Figure with image and showing how we predict the number.
-* Edit application, add training and test datasets
 * Edit results with appendix and figure
 * Proofread math and citations
 * remove indentation or indent first paragraph also
 * Add james meiss name
+* check tenses
