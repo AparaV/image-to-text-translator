@@ -3,7 +3,6 @@
 * Figure with image and showing how we predict the number.
 * Edit application, add training and test datasets
 * Edit results with appendix and figure
-* Change \vec{} format
 * Proofread math and citations
 * remove indentation or indent first paragraph also
 * Add james meiss name
