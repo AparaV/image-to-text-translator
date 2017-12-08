@@ -3,6 +3,5 @@
 * Figure with image and showing how we predict the number.
 * Edit results with appendix and figure
 * Proofread math and citations
-* remove indentation or indent first paragraph also
 * Add james meiss name
 * check tenses
