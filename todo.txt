@@ -2,8 +2,6 @@
 * Another figure - showing other separating planes - change the caption and text
 * Figure with image and showing how we predict the number.
 * Appendix C - code with sample results of a desicison.fit planes
-* Edit introduction
-* Edit abstract
 * Edit application, title - classifying digits with svm? - add training and test datasets
 * More appendix?
 * Change \vec{} format

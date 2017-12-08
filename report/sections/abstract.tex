@@ -3,4 +3,7 @@
 %=====================
 
 \noindent
-{Software recognition of data and images is a common area of interest. One of the methods for data recognition is through Support Vector Machines (SVM). These networks operating by taking initial vectors, support vectors, which are already classified and are used in order to train the program to be able to accurately predict which data set a new vector comes from. These can be implemented to recognize the digits 0 through 9 by transforming each of the images of digits into vectors. Once the SVM is trained with images of digits (from MNIST) this can then be used to read these digits with some accuracy.}
+{Classifying text in images is an interesting problem. In this report, we study Support Vector Machines (SVM)\cite{statistical-learning} and how we can use them to classify images of handwritten digits from the MNIST database\cite{mnist}. SVM is able to classify data into two different classes by constructing a hyperplane that separates the two classes. For our application, we have $10$ different classes ($10$ digits). So, we constructed $10$ optimal hyperplanes, one for each digit $k$ which was able to classify the image as either digit $k$ or not.}
+
+\noindent
+{In case the data is not linearly separable, it is impossible to construct such an optimal hyperplane. For such, data we need to use a kernel to transform the data such that it becomes linearly separable. We used $4$ different kernels - linear, quadratic, cubic, and sigmoid kernel. The quadratic transformation of the data provided the best results with an accuracy of $98.08$ \% and the sigmoid transformation gave the worst results with an accuracy of $10.09$ \%.}
