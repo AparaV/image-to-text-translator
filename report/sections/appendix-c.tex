@@ -1,0 +1,32 @@
+\section{Code}
+\label{appendix:code}
+
+Here are some code snippets from the actual program that we used to construct hyperplanes and classify images. Code Snippet \textbf{(\ref{code:imports})} shows some important libraries that we used.
+
+\begin{lstlisting}[caption={Importing important libraries}, label={code:imports}, language=Python]
+import numpy as np
+from sklearn import svm # Provides the optimizer
+\end{lstlisting}
+
+Code Snippet \textbf{(\ref{code:lin-clf})} shows how we used \texttt{sklearn} to find the optimal hyperplane. Here, \texttt{X\_train} is a \texttt{numpy} array of the training images that have been unrolled and vectorized. \texttt{y\_train} is a \texttt{numpy} array of the correct label for each of the corresponding images in \texttt{X\_train}.
+
+\begin{lstlisting}[caption={Creating and optmizing the support vector machine}, label={code:lin-clf}, language=Python]
+# Sets up a simple support vector machine
+lin_clf = svm.LinearSVC()
+# Finds the optimal hyperplane by solving the optimization problem
+lin_clf.fit(X_train, y_train)
+\end{lstlisting}
+~\\
+Code Snippet \textbf{(\ref{code:prediction})} shows how we can then retrieve the information about the hyperplanes, and the calculate the prediction from the optimized model.
+
+\begin{lstlisting}[caption={Predicting the class}, label={code:prediction}, language=Python]
+# Finds the output for each of the 10 optimal hyperplanes
+output = lin_clf.decision_function([X_train[1]])
+>>> output = [[ 2.73080436 -7.39818639 -2.23185693 -2.26796495 -4.86076138 -2.20572871 -3.33931763 -4.9160509  -2.51609689 -3.23372526 ]]
+
+# Uses the output to predict the class
+prediction = lin_clf.predict([X_train[1]])
+>>> prediction = [0]
+\end{lstlisting}
+~\\ \\
+You can find the entire code we used at our GitHub repository - \url{https://github.com/AparaV/multi-digit-classifier}.
