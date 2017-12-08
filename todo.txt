@@ -1,5 +1,4 @@
 * Fig 1 - label support vectors - change the caption and text
 * Another figure - showing other separating planes - change the caption and text
 * Proofread math and citations
-* Add james meiss name
 * check tenses
