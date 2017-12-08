@@ -28,7 +28,7 @@ We construct this hyperplane such that:
 \vec{w}\cdot\vec{x_i} + b \leq -1 \text{ if $y_i = -1$} \label{eq:notclass-1} 
 \end{gather}
 
-Once again, choice of $1$ and $-1$ are arbitrary. We chose these values to make math cleaner. Now, notice that we have also constructed two planes that are parallel to our separating plane (\ref{eq:optimal-plane}). These planes form the margin for their respective classes.
+Once again, choice of $1$ and $-1$ for our margins are arbitrary. Now, notice that we have also constructed two planes that are parallel to our separating plane (\ref{eq:optimal-plane}). These planes form the margin for their respective classes.
 \begin{gather}
 \vec{w}\cdot\vec{x} + b = 1 \label{eq:margin-class-1} \\
 \vec{w}\cdot\vec{x} + b = -1 \label{eq:margin-notclass-1}
@@ -41,7 +41,7 @@ The distance between the margin hyperplanes is given by\footnote{See Appendix \r
 d = \frac{2}{\norm{\vec{w}}} \label{eq:margin-dist}
 \end{equation}
 
-Maximizing the distance can be thought of as minimizing $\frac{\norm{\vec{w}}}{2}$. And minimizing $\frac{\norm{\vec{w}}}{2}$ is the same as minimizing $\frac{\norm{\vec{w}}^2}{2}$. So now, we have our optimization problem:
+The $2$ in the numerator is consequence of our choice that $y_i \in \{1, -1\}$. We want to maximize the distance, and maximizing the distance can be thought of as minimizing $\frac{\norm{\vec{w}}}{2}$. And minimizing $\frac{\norm{\vec{w}}}{2}$ is the same as minimizing $\frac{\norm{\vec{w}}^2}{2}$. So now, we have our optimization problem:
 \begin{gather}
 	\min_{\vec{w}, b} \frac{1}{2}\norm{w}^2 \nonumber\\
 	\text{s.t. }
@@ -53,21 +53,22 @@ Maximizing the distance can be thought of as minimizing $\frac{\norm{\vec{w}}}{2
 	\end{cases}
 \end{gather}
 
-This turns out to be a Quadratic Programming Problem, and beyond the scope of this report\footnote{See Appendix \ref{appendix:optimzation} for a discussion of this optimization problem in detail}. But, it turns out that this problem is optimal i.e., it can be optimized subject to the constraints we have.
+This turns out to be a Quadratic Programming Problem, and beyond the scope of this report\footnote{See Appendix \ref{appendix:optimization} for a discussion of this optimization problem in detail}. But, it turns out that our choice of $1$ and $-1$ for the margins in equations (\ref{eq:margin-class-1}-\ref{eq:margin-notclass-1}) help make this problem is optimal i.e., it can be optimized subject to the constraints we have.
 
-One of the constraints of the optimization problem is:
+One of the constraints of the optimization problem that can be derived is \footnote{See Appendix \ref{appendix:optimization} for details}:
 \begin{equation}
 \vec{w} = \sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i} \label{eq:w-and-x}
 \end{equation}
 
 where $\alpha_{i}$ are the Lagrange multipliers. From this, we can deduce that the vector orthogonal to the optimal hyperplane is a linear combination of the input vectors i.e.,
-\begin{equation*}
-	\vec{w} \in \text{span}(\vec{x_1}, \vec{x_2}, \dots, \vec{x_n})
-\end{equation*}
+\begin{gather}
+	\vec{w} \in \text{span}(\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}) \label{eq:normal-inputs} \\
+	\vec{w} \in \text{rng}(X); \quad X = (\vec{x_1} \ \vec{x_2} \ \dots \ \vec{x_n})
+\end{gather}
 
-Also, with equation (\ref{eq:w-and-x}), we can now rewrite our optimal hyperplane as:
+We do not know anything about the independence of $\{\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}\}$. So, we cannot say anything about the basis and dimension of $X$. Also, with equation (\ref{eq:w-and-x}), we can now rewrite our optimal hyperplane as:
 \begin{align}
-	\vec{w}\cdot\vec{x} + b = \Big(\sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i}\Big)^{\text{T}} + b \nonumber \\
+	\vec{w}\cdot\vec{x} + b = \Big(\sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i}\Big)^{\text{T}}\vec{x} + b \nonumber \\
 = \sum_{i = 1}^{m}\alpha_{i}y_{i}\langle\vec{x_i}, \vec{x}\rangle + b \label{eq:new-plane}
 \end{align}
 
@@ -129,4 +130,6 @@ If $K$ is a valid Kernel, then $K_{ji} = K(\vec{x_j}, \vec{x_i}) = \phi(\vec{x_j
 &\geq 0 \label{eq:kernel-psd}
 \end{align}
 
-From equation (\ref{eq:kernel-psd}), we know that the Kernel matrix is positive semi-definite ($K \geq 0$). Hence, if $K$ is a valid kernel (i.e., corresponds to a feature mapping $\phi$), then the corresponding Kernel matrix $K \in \mathbb{R}^{n\times n}$ is symmetric positive definite. More generally, it turns out that this not just a necessary, but also a sufficient, condition for $K$ to be a valid kernel.  
+From equation (\ref{eq:kernel-psd}), we know that the Kernel matrix is positive semi-definite ($K \geq 0$). Hence, if $K$ is a valid kernel (i.e., corresponds to a feature mapping $\phi$), then the corresponding Kernel matrix $K \in \mathbb{R}^{n\times n}$ is symmetric positive definite. More generally, it turns out that this not just a necessary, but also a sufficient, condition for $K$ to be a valid kernel.
+
+We must take care when using a kernel transformation. Using the wrong transformation can worsen our results. For instance, if we initially had data that was linearly separable and transformed it with, say, the polar transformation, then our new feature space (transformed data) is no longer linearly separable, decreasing the accuracy of our classifier.
