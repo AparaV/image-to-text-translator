@@ -3,13 +3,25 @@
 %=====================
 
 \begin{figure*}[!tb]
-	\includegraphics[width=7cm, height=7cm]{SVM_fig2}
-	\centering
-	\caption{Notice that the best hyperplane that separates the two classes is as far away from the margin planes as possible. Any other separating hyperplane would not seem \textit{natural} for the data we have.}
-	\label{fig:SVM_fig1}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, height=7cm]{SVM_fig}
+		\caption{Finding the optimal hyperplane}
+		\centering
+		\label{fig:SVM_fig_a}
+	\end{subfigure}%
+	~
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, 			height=7cm]{SVM_fig2}
+		\caption{The optimal hyperplane}
+		\centering
+		\label{fig:SVM_fig_b}
+	\end{subfigure}%
+	
+	\caption{Figure \ref{fig:SVM_fig_a} shows $3$ different separating hyperplanes, however only one separates the data most naturally. This is called the optimal hyperplane. Figure \ref{fig:SVM_fig_b} shows the optimal hyperplane, the margin planes, and the support vectors.}
+	\label{fig:SVM_fig}
 \end{figure*}
 
-The concept of Support Vector Machines is very simple. It is a classifier that classifies data into two different classes by constructing a hyperplane that separates the two different classes. Figure \ref{fig:SVM_fig1} illustrates a simple example.
+The concept of Support Vector Machines is very simple. It is a classifier that classifies data into two different classes by constructing a hyperplane that separates the two different classes. Figure \ref{fig:SVM_fig} illustrates a simple example.
 
 Suppose we have training data:
 \begin{gather}
@@ -34,7 +46,7 @@ Once again, choice of $1$ and $-1$ for our margins are arbitrary. Now, notice th
 \vec{w}\cdot\vec{x} + b = -1 \label{eq:margin-notclass-1}
 \end{gather}
 
-Generally, there are infinitely many hyperplanes that are able to separate the data. To find the \textit{best} hyperplane (the optimal hyperplane) that separates the two classes, we want to maximize the distance between the two margin hyperplanes. This supports our intuition that the \textit{best} separating plane should be as far away from both the classes as possible. See figure \ref{fig:SVM_fig1} to understand why this supports our intuition.
+Generally, there are infinitely many hyperplanes that are able to separate the data. To find the \textit{best} hyperplane (the optimal hyperplane) that separates the two classes, we want to maximize the distance between the two margin hyperplanes. This supports our intuition that the \textit{best} separating plane should be as far away from both the classes as possible. See figure \ref{fig:SVM_fig_a} to understand why this supports our intuition.
 
 The distance between the margin hyperplanes is given by\footnote{See Appendix \ref{appendix:distance} for proof}:
 \begin{equation}
@@ -72,7 +84,7 @@ We do not know anything about the independence of $\{\vec{x_1}, \vec{x_2}, \dots
 = \sum_{i = 1}^{m}\alpha_{i}y_{i}\langle\vec{x_i}, \vec{x}\rangle + b \label{eq:new-plane}
 \end{align}
 
-Now, let us turn our attention back to the margin hyperplanes. Notice that these hyperplanes are defined by the vectors that are the closest to the optimal hyperplane. And these vectors determine our margin, and thus our optimization problem. Hence, these vectors are called \textbf{Support Vectors} and thus this technique is called \textit{Support Vector Machines}.
+Now, let us turn our attention back to the margin hyperplanes. Notice that these hyperplanes are defined by the vectors that are the closest to the optimal hyperplane. And these vectors determine our margin, and thus our optimization problem. Hence, these vectors are called \textbf{Support Vectors} and thus this technique is called \textit{Support Vector Machines}. Figure \ref{fig:SVM_fig_b} shows the support vectors for our simple example.
 
 \begin{figure*}[!tb]
 	\centering

@@ -33,11 +33,23 @@ The two sets' vectors with the minimum distance to each other are defined as the
 
 Figure \ref{fig:SVM_fig2} shows this concept using a Matlab plot
 
-\begin{figure*}[!htb]
-	\includegraphics[width=10cm, height=10cm]{SVM_fig2}
-	\centering
+\begin{figure*}[t]
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, height=7cm]{SVM_fig2}
+		\caption{}
+		\centering
+		\label{fig:SVM_fig_a}
+	\end{subfigure}%
+	~
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=7cm, 			height=7cm]{SVM_fig}
+		\caption{}
+		\centering
+		\label{fig:SVM_fig_b}
+	\end{subfigure}%
+	
 	\caption{The hyperplane is constrained to be within the limits of the margin, which are themselves defined by the support vectors.}
-	\label{fig:SVM_fig2}
+	\label{fig:SVM_fig}
 \end{figure*}
 
 This form is called canonical, as we have chosen to define $y \in \{-1, 1\}$. The choices of -1 and 1 are arbitrary, but result in the simplest most efficient calculation in computer applications. The set of $y$ values represents our two classes, and must always only have two elements. The problem of applying this to problems with more than 2 cases is discussed later, since our problem is to differentiate between 10 classes of numerical digits.
