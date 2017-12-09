@@ -131,7 +131,7 @@ K(\vec{x}, \vec{y}) = (\vec{x}^{\text{T}}\vec{y} + c)^n
 
 where $c$ is a parameter that controls the relative weighting of $\vec{x}$ and $\vec{y}$. It turns out that there is a feature mapping $\phi$ that corresponds to this kernel function. More generally, we can use $K$ as a kernel function only if it corresponds to a feature mapping $\phi$ i.e., $K(\vec{x}, \vec{y}) = \phi(\vec{x})^{\text{T}}\phi(\vec{y})$ for all $\vec{x}, \vec{y}$.
 
-Suppose that $K$ is a valid kernel corresponding to a feature mapping $\phi$. Then, consider a set of $n$ vectors $\{\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}\}$. Now, we can define a matrix, called Kernel Matrix $K$, whose $(i,j)^{th}$ entry is given by $K_{ij} = K(\vec{x_i}, \vec{x_j})$. Note that we have overloaded $K$ with both the kernel function and the kernel matrix.
+Suppose that $K$ is a valid kernel corresponding to a feature mapping $\phi$. Then, consider a set of $n$ vectors $\{\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}\}$. Now, we can define a matrix, called Kernel Matrix $K$, whose $(i,j)^{th}$ entry is given by $K_{ij} = K(\vec{x_i}, \vec{x_j})$. Note that we have overloaded $K$ with both the kernel function and the Kernel matrix.
 If $K$ is a valid Kernel, then $K_{ji} = K(\vec{x_j}, \vec{x_i}) = \phi(\vec{x_j})^{\text{T}}\phi(\vec{x_i}) = \phi(\vec{x_i})^{\text{T}}\phi(\vec{x_j}) = K(\vec{x_i}, \vec{x_j}) = K_{ij}$. Thus, $K$ is symmetric. Let $\phi_k(\vec{x})$ denote the $k$-th coordinate of the $\phi(\vec{x})$ vector. And, let $\vec{z}$ be a vector in $\mathbb{R}^n$.
 \begin{align}
 	\vec{z}K\vec{z} &= \sum_{i}\sum_{j} z_{i}K_{ij}z_{j} \nonumber \\
