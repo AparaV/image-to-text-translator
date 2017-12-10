@@ -54,7 +54,7 @@ Simplifying (\ref{eq:lag}) with (\ref{eq:lag-w}) and (\ref{eq:lag-b}), we have
 Using (\ref{eq:lag-simple}), our constraints $\alpha_{i} \geq 0$ and (\ref{eq:lag-b}), we obtain the following \textbf{dual} optimization problem:
 
 \begin{gather}
-\max_{\alpha} W(\alpha) = \sum_{i = 1}^{m}\alpha_{i} - - \frac{1}{2}\sum_{i,j = 1}^{m}y_{i}y_{j}\alpha_{i}\alpha_{j}\langle\vec{x_i}, \vec{x_j} \label{eq:dual} \\
+\max_{\alpha} W(\alpha) = \sum_{i = 1}^{m}\alpha_{i} - \frac{1}{2}\sum_{i,j = 1}^{m}y_{i}y_{j}\alpha_{i}\alpha_{j}\langle\vec{x_i}, \vec{x_j}\rangle \label{eq:dual} \\
 \text{s.t. } \quad\alpha_{i} \geq 0\text{ ,}\quad\text{$i = 1, 2, \dots , m$} \label{eq:dual-c1} \\
 \quad \sum_{i = 1}^{m}\alpha_{i}y_{i} = 0 \label{eq:dual-c2}
 \end{gather}

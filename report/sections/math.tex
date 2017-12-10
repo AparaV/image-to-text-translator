@@ -21,7 +21,7 @@
 	\label{fig:SVM_fig}
 \end{figure*}
 
-The concept of Support Vector Machines is very simple. It is a classifier that classifies data into two different classes by constructing a hyperplane that separates the two different classes. Figure \ref{fig:SVM_fig} illustrates a simple example.
+The concept of Support Vector Machines is very simple. The SVM classifies data into two different classes by constructing a hyperplane that separates the two different classes. Figure \ref{fig:SVM_fig} illustrates a simple example.
 
 Suppose we have training data:
 \begin{gather}
@@ -29,7 +29,7 @@ Suppose we have training data:
 \vec{x_i} \in \mathbb{R}^{n} \quad\text{and}\quad y_i \in \{1, -1\} \nonumber
 \end{gather}
 
-where $1$ and $-1$ represent the two classes. We have chosen $ y_i \in \{1, -1\}$ because it makes the math simpler and cleaner, as will see. Now, suppose that the training data can be separated by the hyperplane\footnote{An important assumption we make is that the training data are linearly separable. We will later see how we can satisfy this assumption}:
+where $1$ and $-1$ represent the two classes. We have chosen $ y_i \in \{1, -1\}$ because it makes the math simpler and cleaner, as we will see. Now, suppose that the training data can be separated by the hyperplane\footnote{An important assumption we make is that the training data are linearly separable. We will later see how we can satisfy this assumption}:
 \begin{equation}
 \vec{w}\cdot\vec{x} + b = 0 \label{eq:optimal-plane}
 \end{equation}
@@ -46,7 +46,7 @@ Once again, choice of $1$ and $-1$ for our margins are arbitrary. Now, notice th
 \vec{w}\cdot\vec{x} + b = -1 \label{eq:margin-notclass-1}
 \end{gather}
 
-Generally, there are infinitely many hyperplanes that are able to separate the data. To find the \textit{best} hyperplane (the optimal hyperplane) that separates the two classes, we want to maximize the distance between the two margin hyperplanes. This supports our intuition that the \textit{best} separating plane should be as far away from both the classes as possible. See figure \ref{fig:SVM_fig_a} to understand why this supports our intuition.
+Generally, there are infinitely many hyperplanes that are able to separate the data. To find the \textit{best} hyperplane (the optimal hyperplane) that separates the two classes, we want to maximize the distance between the two margin hyperplanes. This supports our intuition that the \textit{best} separating plane should be as far away from both the classes as possible. See Figure \ref{fig:SVM_fig_a} to understand why this supports our intuition.
 
 The distance between the margin hyperplanes is given by\footnote{See Appendix \ref{appendix:distance} for proof}:
 \begin{equation}
@@ -65,9 +65,9 @@ The $2$ in the numerator is consequence of our choice that $y_i \in \{1, -1\}$. 
 	\end{cases}
 \end{gather}
 
-This turns out to be a Quadratic Programming Problem, and beyond the scope of this report\footnote{See Appendix \ref{appendix:optimization} for a discussion of this optimization problem in detail}. But, it turns out that our choice of $1$ and $-1$ for the margins in equations (\ref{eq:margin-class-1}-\ref{eq:margin-notclass-1}) help make this problem is optimal i.e., it can be optimized subject to the constraints we have.
+This is a Quadratic Programming Problem, and beyond the scope of this report\footnote{See Appendix \ref{appendix:optimization} for a discussion of this optimization problem in detail}. But, it turns out that our choice of $1$ and $-1$ for the margins in equations (\ref{eq:margin-class-1}-\ref{eq:margin-notclass-1}) make this problem optimal i.e., it can be optimized subject to the constraints we have.
 
-One of the constraints of the optimization problem that can be derived is \footnote{See Appendix \ref{appendix:optimization} for details}:
+One of the constraints of the optimization problem that can be derived is\footnote{See Appendix \ref{appendix:optimization} for details}:
 \begin{equation}
 \vec{w} = \sum_{i = 1}^{m}\alpha_{i}y_{i}\vec{x_i} \label{eq:w-and-x}
 \end{equation}
@@ -84,7 +84,7 @@ We do not know anything about the independence of $\{\vec{x_1}, \vec{x_2}, \dots
 = \sum_{i = 1}^{m}\alpha_{i}y_{i}\langle\vec{x_i}, \vec{x}\rangle + b \label{eq:new-plane}
 \end{align}
 
-Now, let us turn our attention back to the margin hyperplanes. Notice that these hyperplanes are defined by the vectors that are the closest to the optimal hyperplane. And these vectors determine our margin, and thus our optimization problem. Hence, these vectors are called \textbf{Support Vectors} and thus this technique is called \textit{Support Vector Machines}. Figure \ref{fig:SVM_fig_b} shows the support vectors for our simple example.
+Now, let us turn our attention back to the margin hyperplanes. Notice that these hyperplanes are defined by the vectors that are the closest to the optimal hyperplane. These vectors determine our margin, and thus our optimization problem. Hence, these vectors are called \textbf{Support Vectors} and hence this technique is called \textit{Support Vector Machines}. Figure \ref{fig:SVM_fig_b} shows the support vectors for our simple example.
 
 \begin{figure*}[!tb]
 	\centering
@@ -102,13 +102,13 @@ Now, let us turn our attention back to the margin hyperplanes. Notice that these
 		\label{fig:post-trans}
 	\end{subfigure}%
 	
-	\caption{Initially, the data, (\ref{fig:pre-trans}), is not linearly separable i.e., cannot be separated by a hyperplane. After applying a kernel transform, our transformed data, (\ref{fig:post-trans}), becomes linearly separable. Now, we can use a Support Vector Machine to classify the data.}	
+	\caption{Initially, the data, \ref{fig:pre-trans}, is not linearly separable i.e., cannot be separated by a hyperplane. After applying a kernel transform, our transformed data, \ref{fig:post-trans}, becomes linearly separable. Now, we can use a Support Vector Machine to classify the data.}	
 	\label{fig:kernel}
 \end{figure*}
 
 Going back to our assumption that the data we have are linearly separable, we know that this assumption is not always valid. So, we can use something called a \textbf{Kernel}. This technique employs a transformation on the input data to transform the data into a different space, one that is now linearly separable.
 
-Figure \ref{fig:kernel} illustrates a simple example where we use a kernel transform to be able to linearly separate our data. A kernel can be thought of as a transformation function applied to the data. A kernel function is usually nonlinear. Using a linear transformation as the kernel would be futile because, the representation matrix of the linear transform, $A$, would get absorbed by the normal vector of the hyperplane, $\vec{w}$, leaving us with the raw untransformed data again as seen below:
+Figure \ref{fig:kernel} illustrates a simple example where we use a kernel transformation to be able to linearly separate our data. A kernel can be thought of as a transformation function applied to the data. A kernel function is usually nonlinear. Using a linear transformation as the kernel would be futile because, the representation matrix of the linear transform, $A$, would get absorbed by the normal vector of the hyperplane, $\vec{w}$, leaving us with the raw untransformed data again as seen below:
 \begin{gather}
 \begin{aligned}
 	\vec{x^{'}} = \mathcal{L}[\vec{x}] = A\vec{x} \nonumber\\
@@ -129,9 +129,9 @@ For instance, we can define a new polynomial kernel of degree $n$ as:
 K(\vec{x}, \vec{y}) = (\vec{x}^{\text{T}}\vec{y} + c)^n
 \end{equation*}
 
-where $c$ is a parameter that controls the relative weighting of $\vec{x}$ and $\vec{y}$. It turns out that there is a feature mapping $\phi$ that corresponds to this kernel function. More generally, we can use $K$ as a kernel function only if it corresponds to a feature mapping $\phi$ i.e., $K(\vec{x}, \vec{y}) = \phi(\vec{x})^{\text{T}}\phi(\vec{y})$ for all $\vec{x}, \vec{y}$.
+where $c$ is a parameter that controls the relative weighting of $\vec{x}$ and $\vec{y}$. It turns out that there is a feature mapping $\phi$ that corresponds to this kernel function i.e., there is a $\phi$ such that $K(\vec{x}, \vec{y}) = \phi(\vec{x})^{\text{T}}\phi(\vec{y})$ for all $\vec{x}, \vec{y}$\cite{svm-andrew-ng}. More generally, we can use $K$ as a kernel function only if it corresponds to a feature mapping $\phi$.
 
-Suppose that $K$ is a valid kernel corresponding to a feature mapping $\phi$. Then, consider a set of $n$ vectors $\{\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}\}$. Now, we can define a matrix, called Kernel Matrix $K$, whose $(i,j)^{th}$ entry is given by $K_{ij} = K(\vec{x_i}, \vec{x_j})$. Note that we have overloaded $K$ with both the kernel function and the Kernel matrix.
+Suppose that $K$ is a valid kernel corresponding to a feature mapping $\phi$. Then, consider a set of $n$ vectors $\{\vec{x_1}, \vec{x_2}, \dots, \vec{x_n}\}$. Now, we can define a matrix, called Kernel Matrix $K$, whose $(i,j)$-th entry is given by $K_{ij} = K(\vec{x_i}, \vec{x_j})$. Note that we have overloaded $K$ with both the kernel function and the Kernel matrix.
 If $K$ is a valid Kernel, then $K_{ji} = K(\vec{x_j}, \vec{x_i}) = \phi(\vec{x_j})^{\text{T}}\phi(\vec{x_i}) = \phi(\vec{x_i})^{\text{T}}\phi(\vec{x_j}) = K(\vec{x_i}, \vec{x_j}) = K_{ij}$. Thus, $K$ is symmetric. Let $\phi_k(\vec{x})$ denote the $k$-th coordinate of the $\phi(\vec{x})$ vector. And, let $\vec{z}$ be a vector in $\mathbb{R}^n$.
 \begin{align}
 	\vec{z}K\vec{z} &= \sum_{i}\sum_{j} z_{i}K_{ij}z_{j} \nonumber \\
@@ -142,6 +142,6 @@ If $K$ is a valid Kernel, then $K_{ji} = K(\vec{x_j}, \vec{x_i}) = \phi(\vec{x_j
 &\geq 0 \label{eq:kernel-psd}
 \end{align}
 
-From equation (\ref{eq:kernel-psd}), we know that the Kernel matrix is positive semi-definite ($K \geq 0$). Hence, if $K$ is a valid kernel (i.e., corresponds to a feature mapping $\phi$), then the corresponding Kernel matrix $K \in \mathbb{R}^{n\times n}$ is symmetric positive definite. More generally, it turns out that this not just a necessary, but also a sufficient, condition for $K$ to be a valid kernel.
+From equation (\ref{eq:kernel-psd}), we know that the Kernel matrix is positive semi-definite ($K \geq 0$). Hence, if $K$ is a valid kernel (i.e., corresponds to a feature mapping $\phi$), then the corresponding Kernel matrix $K \in \mathbb{R}^{n\times n}$ is symmetric positive definite. More generally, it turns out that this not just a necessary, but also a sufficient, condition for $K$ to be a valid kernel\cite{svm-andrew-ng}.
 
-We must take care when using a kernel transformation. Using the wrong transformation can worsen our results. For instance, if we initially had data that was linearly separable and transformed it with, say, the polar transformation, then our new feature space (transformed data) is no longer linearly separable, decreasing the accuracy of our classifier.
+We must take care when using a kernel transformation. Using the wrong transformation can worsen our results. For instance, if we initially had data that was linearly separable and transformed it with, say, a polar transformation, then our new feature space (transformed data) is no longer linearly separable, decreasing the accuracy of our classifier.
